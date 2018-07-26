@@ -35,7 +35,7 @@
   background-color: #C2C2C5;
 }
 
-.boardSettings:hover {
+.boardSettings:hover, .boardSettings.selected {
   color: #fff;
   background-color: #204d74;
   border-color: #122b40;

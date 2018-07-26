@@ -60,7 +60,7 @@ class Board extends Component {
 
 
   render() {
-    const { rows, columns, handleSave, isSaving } = this.props
+    const { id, rows, columns, handleSave, isSaving } = this.props
     const board = this.state.board
     return (
       <div className='Board'>
@@ -75,7 +75,7 @@ class Board extends Component {
             ))}
           </div>
           <div>
-            <button onClick={e => handleSave(board, rows, columns)}>Save</button>
+            <button onClick={e => handleSave(board, rows, columns, id)}>Save</button>
             <button onClick={e => this.setInitialData(rows, columns)}>Reset</button>
           </div>
 

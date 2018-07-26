@@ -9,12 +9,13 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      selectedBoard: {columns: 3, rows: 3, data: undefined},
+      selectedBoard: {id:3, columns: 3, rows: 3, data: undefined},
       boards: [
-        {columns: 2, rows: 2, data: undefined},
-        {columns: 4, rows: 2, data: undefined},
-        {columns: 3, rows: 3, data: undefined},
-        {columns: 6, rows: 2, data: undefined}
+        {id:1, columns: 2, rows: 2, data: undefined},
+        {id:2, columns: 4, rows: 2, data: undefined},
+        {id:3, columns: 3, rows: 3, data: undefined},
+        {id:4, columns: 3, rows: 3, data: undefined},
+        {id:5, columns: 6, rows: 2, data: undefined}
       ],
       isSaving: false
     }
@@ -22,17 +23,20 @@ class App extends Component {
     this.handleSave = this.handleSave.bind(this);
   }
   //This method save the selected board on localstorage and add it to gallery
-  handleSave = (data, rows, columns) => {
+  handleSave = (data, rows, columns, id) => {
     const state = this.state;
     const board = {data:data, rows:rows, columns:columns}
     //To save selected board to local storage.
     localStorage.setItem('board', JSON.stringify(board));
 
-
-
-    //You can add current board to the list here (allways add one for now)
     const boards = this.state.boards;
-    boards.push(board)
+    if (id < 6) {
+      board.id = boards.length + 1;
+      boards.push(board)
+    } else {
+      boards[id - 1] = board
+    }
+
     this.setState({boards: boards, selectedBoard: board, isSaving: true})
     setTimeout(
       function() {
@@ -57,8 +61,8 @@ class App extends Component {
           <h1 className="App-title">Welcome to Quid Challenge</h1>
         </header>
         <div>
-            <Board isSaving={isSaving} columns={board.columns} rows={board.rows} data={board.data} handleSave={this.handleSave}/>
-            <Gallery handleClick={this.selectBoard} boards={this.state.boards} />
+            <Board isSaving={isSaving} columns={board.columns} rows={board.rows} data={board.data} id={board.id} handleSave={this.handleSave}/>
+            <Gallery handleClick={this.selectBoard} boards={this.state.boards} selected={board.id}/>
         </div>
       </div>
     );
