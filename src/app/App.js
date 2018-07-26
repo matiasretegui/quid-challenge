@@ -24,12 +24,12 @@ class App extends Component {
   }
   //This method save the selected board on localstorage and add it to gallery
   handleSave = (data, rows, columns, id) => {
-    const state = this.state;
     const board = {data:data, rows:rows, columns:columns}
     //To save selected board to local storage.
     localStorage.setItem('board', JSON.stringify(board));
 
     const boards = this.state.boards;
+    //I don't want edit default boards
     if (id < 6) {
       board.id = boards.length + 1;
       boards.push(board)
@@ -38,6 +38,7 @@ class App extends Component {
     }
 
     this.setState({boards: boards, selectedBoard: board, isSaving: true})
+    //This is only to simulate a server call
     setTimeout(
       function() {
         this.setState({isSaving: false});

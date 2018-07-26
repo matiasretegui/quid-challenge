@@ -1,7 +1,7 @@
 import React from 'react'
 
-const ColorPicker = ({color, handleClick}) => (
-  <button className="ColorPicker" onClick={handleClick}   style={{backgroundColor : color}}>
+const ColorPicker = ({color, handleClick, key}) => (
+  <button className="ColorPicker" onClick={handleClick} key={key} style={{backgroundColor : color}}>
   </button>
 )
 
