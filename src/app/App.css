@@ -1,0 +1,56 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  animation: App-logo-spin infinite 20s linear;
+  height: 80px;
+}
+
+.App-header {
+  background-color: #222;
+  height: 66px;
+  padding: 20px;
+  color: white;
+}
+
+.App-title {
+  font-size: 1.5em;
+}
+
+.App-intro {
+  font-size: large;
+}
+
+.Board {
+  margin: 30px;
+  text-align: center;
+}
+
+.boardSettings {
+  padding: 20px;
+  margin:8px;
+  cursor: pointer;
+  display: inline-block;
+  background-color: #C2C2C5;
+}
+
+.boardSettings:hover {
+  color: #fff;
+  background-color: #204d74;
+  border-color: #122b40;
+}
+
+.ColorPicker {
+  padding: 30px;
+  margin: 5px;
+  cursor: pointer;
+}
+
+.savedMessage {
+  color: #3c763d;
+  background-color: #dff0d8;
+  border-color: #d6e9c6;
+  width: 200px;
+  margin: 0 auto;
+}
